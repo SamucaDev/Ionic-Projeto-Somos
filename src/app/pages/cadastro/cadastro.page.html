@@ -1,0 +1,219 @@
+<div class="DivBack">    
+          <ion-buttons slot="start">
+            <ion-back-button  defaultHref="login"></ion-back-button>
+            <img class="imagemLogo" src="/assets/img/logocadastrar.png">
+          </ion-buttons>            
+    </div>
+
+<ion-content class="swiper-no-swiping">
+       
+  
+    <form [formGroup]="cadastro" (ngSubmit)="cadastrarUsuario()">
+        <ion-slides>
+            <ion-slide>
+                <div class="slide-inner ion-padding">
+                    <span>Cadastro</span>
+
+                    <ion-item class="ion-margin-top">
+                        <ion-input
+                            type="email"
+                            placeholder="E-mail"
+                            [(ngModel)]="email"
+                            formControlName="email"
+                        >
+                        </ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                     
+                    >
+                        <ion-input
+                            type="password"
+                            placeholder="Senha"
+                            [(ngModel)]="senha"
+                            formControlName="senha"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Nome"
+                            [(ngModel)]="nome"
+                            formControlName="nome"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="CPF"
+                            [(ngModel)]="cpf"
+                            formControlName="cpf"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="RG"
+                            [(ngModel)]="rg"
+                            formControlName="rg"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                        
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Endereço"
+                            [(ngModel)]="endereco"
+                            formControlName="endereco"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Bairro"
+                            [(ngModel)]="bairro"
+                            formControlName="bairro"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                        
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Número"
+                            [(ngModel)]="numero"
+                            formControlName="numero"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Complemento"
+                            [(ngModel)]="complemento"
+                            formControlName="complemento"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="CEP"
+                            [(ngModel)]="cep"
+                            formControlName="cep"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="UF"
+                            [(ngModel)]="uf"
+                            formControlName="uf"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Pais"
+                            [(ngModel)]="pais"
+                            formControlName="pais"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Cidade"
+                            [(ngModel)]="cidade"
+                            formControlName="cidade"
+                        ></ion-input>
+                    </ion-item>
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Data de nascimento"
+                            [(ngModel)]="datanasc"
+                            formControlName="datanasc"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                       
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Telefone"
+                            [(ngModel)]="telefone"
+                            formControlName="telefone"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-item
+                        class="ion-margin-top"
+                      
+                    >
+                        <ion-input
+                            type="text"
+                            placeholder="Celular"
+                            [(ngModel)]="celular"
+                            formControlName="celular"
+                        ></ion-input>
+                    </ion-item>
+
+                    <ion-button
+                        class="ion-margin-top"
+                        color="light"
+                        expand="block"
+                        type="submit"
+                    >
+                        Cadastrar
+                    </ion-button>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </form>
+
+</ion-content>

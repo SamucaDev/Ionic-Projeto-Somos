@@ -1,0 +1,47 @@
+<div>
+<ion-header>
+    <ion-toolbar>
+        <ion-title>diario</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-header>
+    <ion-toolbar
+        slot="secondary"
+        class="barradepesquisa"
+    >
+        <ion-searchbar showCancelButton="always"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+</div>
+
+<ion-fab
+    class="botaomais"
+    vertical="center"
+    horizontal="end"
+    slot="fixed"
+>
+    <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+
+        <ion-tab-button (click)="RotaChat()">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>chat</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="RotaDiario()">
+            <ion-icon name="contacts"></ion-icon>
+            <ion-label>Diário</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="RotaPost()">
+            <ion-icon name="information-circle"></ion-icon>
+            <ion-label>Post</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>

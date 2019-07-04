@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+  <ion-content fullscreen>
+    <ion-list *ngFor="let item of list">
+    <ion-card>
+      <img src="/src/assets/img/logo.png">
+      <ion-card-header>
+        <ion-card-subtitle>Destination</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>     
+  </ion-list> 
+    </ion-content> 
+  
+
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+      
+      <ion-tab-button (click)="RotaChat()" >
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>chat</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="RotaDiario()">
+        <ion-icon name="contacts"></ion-icon>
+        <ion-label>Diário</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="RotaPost()">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Post</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
