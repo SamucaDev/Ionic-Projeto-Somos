@@ -22,6 +22,7 @@ if(isset($_GET["email"]) || isset($_GET["senha"]) ){
 			$outp .= '{"codigo":"'  . $rs["COD_USU"] . '",';
             $outp .= '"email":"'   . $rs["EMAIL_USU"]        . '",';
             $outp .= '"nome":"'   . $rs["NOME_USU"]        . '",';
+            $outp .= '"foto":"'   . $rs["FOTO_USU"]        . '",';
             $outp .= '"nivel":"'   . $rs["NIVEL_USU"]        . '",';
             $outp .= '"status":"'   . $rs["STATUS_USU"]        . '",';
             $outp .= '"senha":"'. $rs["SENHA_USU"]     . '"}';

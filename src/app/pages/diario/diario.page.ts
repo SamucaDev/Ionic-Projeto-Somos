@@ -4,6 +4,7 @@ import { ServidorService } from '../../service/servidor-service.service';
 import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { DadosUsuarioService } from 'src/app/service/dados-usuario.service';
 
 
 @Component({
@@ -19,7 +20,10 @@ export class DiarioPage implements OnInit {
     public navCtrl: NavController,
     public servidor: ServidorService,
     public alert: AlertController,
-    public http: Http) {  }
+    public http: Http,
+    public dadosUsuario: DadosUsuarioService) {
+
+    }
 
   ngOnInit() {
   }
@@ -34,5 +38,9 @@ export class DiarioPage implements OnInit {
 
     RotaPost() {
     this.Router.navigateByUrl('post');
+    }
+
+    RotaCadastrarDiario() {
+      this.Router.navigateByUrl('cadastrar-diario');
     }
 }

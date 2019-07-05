@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
   { path: 'diario', loadChildren: './pages/diario/diario.module#DiarioPageModule' },
   { path: 'post', loadChildren: './pages/post/post.module#PostPageModule' },
+  { path: 'cadastrar-diario', loadChildren: './pages/cadastrar-diario/cadastrar-diario.module#CadastrarDiarioPageModule' },
 ];
 
 @NgModule({

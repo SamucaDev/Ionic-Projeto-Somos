@@ -24,18 +24,16 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  RotaChat() {
+    this.Router.navigateByUrl('chat');
+    }
 
+    RotaDiario() {
+    this.Router.navigateByUrl('diario');
+    }
 
-RotaChat() {
-this.Router.navigateByUrl('chat');
-}
-
-RotaDiario() {
-this.Router.navigateByUrl('diario');
-}
-
-RotaPost() {
-this.Router.navigateByUrl('post');
-}
+    RotaPost() {
+    this.Router.navigateByUrl('post');
+    }
 
 }

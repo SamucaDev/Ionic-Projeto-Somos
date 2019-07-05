@@ -21,7 +21,6 @@ export class PostPage implements OnInit {
 
   ngOnInit() {
   }
-
   RotaChat() {
     this.Router.navigateByUrl('chat');
     }

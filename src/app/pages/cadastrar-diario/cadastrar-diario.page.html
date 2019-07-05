@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+      
+            <ion-back-button slot="start" defaultHref="/diario"></ion-back-button>
+        
+        <ion-title>Publicar em seu diário</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <form
+            [formGroup]="postagem"
+            (ngSubmit)="postarProduto()"
+        >
+
+            <ion-item>
+                <ion-label position="floating">Título</ion-label>
+                <ion-input
+                    type="text"
+                    name="nome"
+                    formControlName="tituloDiario"
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Subtítulo</ion-label>
+                <ion-input
+                    type="text"
+                    name="Subtitulo"
+                    formControlName="subtituloDiario"
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Conteúdo</ion-label>
+                <ion-input
+                    type="text"
+                    name="Conteudo"
+                    formControlName="conteudodiario"
+                ></ion-input>
+            </ion-item>
+            <div>
+              <ion-button expand="full" color="danger">Publicar</ion-button>
+            </div>
+
+        </form>
+    </ion-list>
+
+</ion-content>
