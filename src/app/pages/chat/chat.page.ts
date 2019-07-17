@@ -18,19 +18,27 @@ export class ChatPage implements OnInit {
     public navCtrl: NavController,
     public servidor: ServidorService,
     public alert: AlertController,
-    public http: Http) {  }
+    public http: Http) { }
 
   ngOnInit() {
   }
   RotaChat() {
     this.Router.navigateByUrl('chat');
-    }
 
-    RotaDiario() {
+  }
+
+  RotaDiario() {
     this.Router.navigateByUrl('diario');
-    }
+  }
 
-    RotaPost() {
+  RotaPost() {
     this.Router.navigateByUrl('post');
-    }
+  }
+
+  Sair() {
+    localStorage.clear();
+    location.reload();
+    this.navCtrl.navigateRoot('login');
+    localStorage.setItem('deslogado', 'sim');
+  }
 }

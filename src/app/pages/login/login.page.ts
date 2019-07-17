@@ -33,6 +33,19 @@ export class LoginPage implements OnInit {
     public loading: LoadingController,
     public dadosUsuario: DadosUsuarioService) {
 
+      this.email = 'gabriel@gmail.com';
+      this.senha = '123';
+
+      if (localStorage.getItem('deslogado') === 'sim') {
+        localStorage.setItem('deslogado', 'não');
+        location.reload();
+      }
+
+      if (localStorage.getItem('user_logado') != null) {
+        this.autenticar();
+        console.log('Autenticação');
+        this.navCtrl.navigateForward('home');
+      }
   }
 
   ngOnInit() { }
@@ -67,15 +80,24 @@ export class LoginPage implements OnInit {
 
       this.http.get(this.servidor.Urlget() + 'login.php?email=' + this.email + '&senha=' + this.senha).pipe(map(res => res.json()))
         .subscribe(
-          async dados => {
+           dados => {
             if (dados.msg.logado === 'sim') {
               this.dadosUsuario.setCodUsuario(dados.dados.codigo);
               this.dadosUsuario.setNomeUsuario(dados.dados.nome);
               this.dadosUsuario.setEmailUsuario(dados.dados.email);
               this.dadosUsuario.setFotoUsuario(dados.dados.foto);
-              this.dadosUsuario.setNivelUsuario(dados.dados.nivel);
+              this.dadosUsuario.setTipoUsuario(dados.dados.tipo);
               this.dadosUsuario.setStatusUsuario(dados.dados.status);
+              localStorage.setItem('CodUsuario', dados.dados.codigo);
+              localStorage.setItem('NomeUsuario', dados.dados.nome);
+              localStorage.setItem('EmailUsuario', dados.dados.email);
+              localStorage.setItem('FotoUsuario', dados.dados.foto);
+              localStorage.setItem('TipoUsuario', dados.dados.tipo);
+              localStorage.setItem('StatusUsuario', dados.dados.status);
+
               load.dismiss();
+              localStorage.setItem('user_logado', dados);
+
               this.Router.navigateByUrl('/home');
 
             } else {
@@ -87,14 +109,13 @@ export class LoginPage implements OnInit {
     }
   }
 
-  segmentChanged(event: any) {
-    if (event.detail.value === 'login') {
-      this.slides.slidePrev();
-      this.wavesPositions += this.wavesDifference;
-    } else {
-      this.slides.slideNext();
-      this.wavesPositions -= this.wavesDifference;
-    }
+  autenticar() {
+    this.dadosUsuario.setCodUsuario(localStorage.getItem('CodUsuario'));
+    this.dadosUsuario.setNomeUsuario(localStorage.getItem('NomeUsuario'));
+    this.dadosUsuario.setEmailUsuario(localStorage.getItem('EmailUsuario'));
+    this.dadosUsuario.setFotoUsuario(localStorage.getItem('FotoUsuario'));
+    this.dadosUsuario.setTipoUsuario(localStorage.getItem('TipoUsuario'));
+    this.dadosUsuario.setStatusUsuario(localStorage.getItem('StatusUsuario'));
   }
 }
 

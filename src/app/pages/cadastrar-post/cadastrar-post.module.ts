@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PostPage } from './post.page';
-
+import { CadastrarPostPage } from './cadastrar-post.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PostPage
+    component: CadastrarPostPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PostPage]
+  declarations: [CadastrarPostPage]
 })
-export class PostPageModule {}
+export class CadastrarPostPageModule {}

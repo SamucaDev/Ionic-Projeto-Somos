@@ -8,7 +8,7 @@ export class DadosUsuarioService {
   codUsuario = '';
   emailUsuario = '';
   statusUsuario = '';
-  nivelUsuario = '';
+  tipoUsuario = '';
   nomeUsuario = '';
   fotoUsuario = '';
 
@@ -39,12 +39,12 @@ export class DadosUsuarioService {
     return this.statusUsuario;
   }
 
-  setNivelUsuario(valor) {
-    this.nivelUsuario = valor;
+  setTipoUsuario(valor) {
+    this.tipoUsuario = valor;
   }
 
-  getNivelUsuario() {
-    return this.nivelUsuario;
+  getTipoUsuario() {
+    return this.tipoUsuario;
   }
 
   setNomeUsuario(valor) {

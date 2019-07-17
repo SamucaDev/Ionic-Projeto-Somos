@@ -1,42 +1,32 @@
-<div>
-<ion-header>
-    <ion-toolbar>
-        <ion-title>diario</ion-title>
-    </ion-toolbar>
-</ion-header>
 
-<ion-header>
-    <ion-toolbar
-        slot="secondary"
-        class="barradepesquisa"
-    >
-        <ion-searchbar showCancelButton="always"></ion-searchbar>
-    </ion-toolbar>
-</ion-header>
-</div>
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>diario</ion-title>
+        </ion-toolbar>
+    </ion-header>  
 
 
+<ion-content>  
+    <ion-refresher slot="fixed"(ionRefresh)="doRefresh($event)">      
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-
-<ion-content fullscreen>
-    <ion-list *ngFor="let item of list">
-    <ion-card>
-      <img src="/src/assets/img/logo.png">
-      <ion-card-header>
-        <ion-card-subtitle>Destination</ion-card-subtitle>
-        <ion-card-title>Madison, WI</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-      </ion-card-content>
-    </ion-card>     
-  </ion-list> 
-    </ion-content> 
-  
-
-
-
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     
+    <ion-list>
+        <ion-card
+            class="corCard"
+            *ngFor="let diario of diarioItem"
+        >
+            <img src="../../../assets/img/peter.jpg">
+            <ion-card-header>
+                <ion-card-title>{{diario.tituloDiario}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>{{diario.conteudoDiario}}</ion-card-content>
+            <ion-label>{{diario.dataDiario}}</ion-label>
+        </ion-card>
+    </ion-list>
+</ion-content>
 
 <ion-fab
     class="botaomais"
@@ -49,22 +39,23 @@
     </ion-fab-button>
 </ion-fab>
 
-<ion-tabs>
-    <ion-tab-bar slot="bottom">
-      
-      <ion-tab-button (click)="RotaChat()" >
+<ion-tab-bar
+    class="tab"
+    slot="bottom"
+>
+
+    <ion-tab-button (click)="RotaChat()">
         <ion-icon name="calendar"></ion-icon>
         <ion-label>chat</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button (click)="RotaDiario()">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="RotaDiario()">
         <ion-icon name="contacts"></ion-icon>
         <ion-label>Diário</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button (click)="RotaPost()">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="RotaPost()">
         <ion-icon name="information-circle"></ion-icon>
         <ion-label>Post</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+    </ion-tab-button>
+</ion-tab-bar>

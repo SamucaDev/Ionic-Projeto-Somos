@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { DadosUsuarioService } from './service/dados-usuario.service';
 
 
 @Component({
@@ -13,9 +14,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(
     private platform: Platform,
+    public navCtrl: NavController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public  Router: Router
+    public Router: Router,
+    public dadosUsuario: DadosUsuarioService
   ) {
     this.initializeApp();
   }
@@ -24,17 +27,38 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.validarUsuario();
+
     });
   }
   RotaChat() {
     this.Router.navigateByUrl('chat');
-    }
+  }
 
-    RotaDiario() {
+  RotaDiario() {
     this.Router.navigateByUrl('diario');
-    }
+  }
 
-    RotaPost() {
+  RotaPost() {
     this.Router.navigateByUrl('post');
+  }
+
+  validarUsuario() {
+    if (localStorage.getItem('user_logado') !== null) {
+      console.log('Usuário logado');
+
+      this.dadosUsuario.setCodUsuario(localStorage.getItem('CodUsuario'));
+      this.dadosUsuario.setNomeUsuario(localStorage.getItem('NomeUsuario'));
+      this.dadosUsuario.setEmailUsuario(localStorage.getItem('EmailUsuario'));
+      this.dadosUsuario.setFotoUsuario(localStorage.getItem('FotoUsuario'));
+      this.dadosUsuario.setTipoUsuario(localStorage.getItem('TipoUsuario'));
+      this.dadosUsuario.setStatusUsuario(localStorage.getItem('StatusUsuario'));
+
+    } else {
+      this.navCtrl.navigateBack('login');
+      console.log('Usuario Não conectado');
+
     }
+  }
+
 }

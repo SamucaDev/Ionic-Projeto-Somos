@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'diario', loadChildren: './pages/diario/diario.module#DiarioPageModule' },
   { path: 'post', loadChildren: './pages/post/post.module#PostPageModule' },
   { path: 'cadastrar-diario', loadChildren: './pages/cadastrar-diario/cadastrar-diario.module#CadastrarDiarioPageModule' },
+  { path: 'cadastrar-post', loadChildren: './pages/cadastrar-post/cadastrar-post.module#CadastrarPostPageModule' },
 ];
 
 @NgModule({

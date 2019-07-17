@@ -9,39 +9,31 @@
 
 <ion-content padding>
     <ion-list>
-        <form
-            [formGroup]="postagem"
-            (ngSubmit)="postarProduto()"
-        >
+        <form [formGroup]="postagem" (ngSubmit)="postarDiario()">
 
             <ion-item>
                 <ion-label position="floating">Título</ion-label>
                 <ion-input
                     type="text"
                     name="nome"
+                    [(ngModel)]="tituloDiario"
                     formControlName="tituloDiario"
                 ></ion-input>
             </ion-item>
-
-            <ion-item>
-                <ion-label position="floating">Subtítulo</ion-label>
-                <ion-input
-                    type="text"
-                    name="Subtitulo"
-                    formControlName="subtituloDiario"
-                ></ion-input>
-            </ion-item>
+           
 
             <ion-item>
                 <ion-label position="floating">Conteúdo</ion-label>
                 <ion-input
                     type="text"
                     name="Conteudo"
+                    [(ngModel)]="conteudodiario"
                     formControlName="conteudodiario"
                 ></ion-input>
             </ion-item>
+
             <div>
-              <ion-button expand="full" color="danger">Publicar</ion-button>
+              <ion-button expand="full" color="danger" type="submit">Publicar</ion-button>
             </div>
 
         </form>

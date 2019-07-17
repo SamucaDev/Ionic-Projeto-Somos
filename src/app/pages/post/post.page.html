@@ -1,26 +1,62 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>post</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>post</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    
-    <ion-tab-button (click)="RotaChat()" >
-      <ion-icon name="calendar"></ion-icon>
-      <ion-label>chat</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button (click)="RotaDiario()">
-      <ion-icon name="contacts"></ion-icon>
-      <ion-label>Diário</ion-label>
-    </ion-tab-button>
+<ion-content>     
 
-    <ion-tab-button (click)="RotaPost()">
-      <ion-icon name="information-circle"></ion-icon>
-      <ion-label>Post</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+        <ion-refresher slot="fixed"(ionRefresh)="doRefresh($event)">      
+                <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+
+    <ion-list>        
+        <ion-card class="corCard" *ngFor="let post of postItem">
+            <ion-item>
+                <ion-avatar slot="start">
+                  <img src="../../../assets/img/peter.jpg">
+                </ion-avatar>
+                <ion-label>
+                  <h3>{{post.nomeUsu}}</h3>
+                <p>{{post.dataPost}}</p>
+              </ion-label>
+              </ion-item>
+            <ion-card-content>{{post.conteudoPost}}</ion-card-content>
+            <img src="../../../assets/img/peter.jpg">
+        </ion-card>
+        
+    </ion-list>
+
+    <ion-fab
+    class="botaomais"
+    vertical="center"
+    horizontal="end"
+    slot="fixed"
+>
+    <ion-fab-button (click)="RotaCadastrarDiario()">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+</ion-content>
+
+
+    <ion-tab-bar slot="bottom">
+
+        <ion-tab-button (click)="RotaChat()">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>chat</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="RotaDiario()">
+            <ion-icon name="contacts"></ion-icon>
+            <ion-label>Diário</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="RotaPost()">
+            <ion-icon name="information-circle"></ion-icon>
+            <ion-label>Post</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
 
