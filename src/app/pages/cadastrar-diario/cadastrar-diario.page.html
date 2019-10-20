@@ -1,39 +1,55 @@
-<ion-header>
-    <ion-toolbar>
+<ion-header >
+    <ion-toolbar style="--background: #F0F8FF">
       
             <ion-back-button slot="start" defaultHref="/diario"></ion-back-button>
         
-        <ion-title>Publicar em seu diário</ion-title>
+        <ion-title *ngIf="codigo == null">Escrever</ion-title>
+        <ion-title *ngIf="codigo != null">Edição</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-list>
-        <form [formGroup]="postagem" (ngSubmit)="postarDiario()">
+<ion-content padding class="cordefundo">
 
-            <ion-item>
-                <ion-label position="floating">Título</ion-label>
-                <ion-input
+<div class="cormundinho">
+     <img class="fotomundo" src="../../../assets/img/diario.png">
+</div>
+
+
+    <ion-list style="background: #F0F8FF">
+        <form [formGroup]="postagem" (ngSubmit)="postarDiario()" style="background:#F0F8FF">
+
+            <ion-item  class="tituli" lines="none">
+                
+                <ion-textarea
+                rows="1" maxLength="500" 
+                    class="input2"
                     type="text"
                     name="nome"
                     [(ngModel)]="tituloDiario"
                     formControlName="tituloDiario"
-                ></ion-input>
+                    value="{{tituloDiario}}"
+                    placeholder="Digite aqui um título..."
+                ></ion-textarea>
             </ion-item>
            
 
-            <ion-item>
-                <ion-label position="floating">Conteúdo</ion-label>
-                <ion-input
+            <ion-item class="conteudodiario" lines="none">
+                
+                <ion-textarea
+                rows="7" maxLength="500" 
+                    class="input"
                     type="text"
                     name="Conteudo"
                     [(ngModel)]="conteudodiario"
                     formControlName="conteudodiario"
-                ></ion-input>
+                    value="{{conteudodiario}}"
+                    placeholder="Digite o conteúdo..."
+                ></ion-textarea>
             </ion-item>
 
             <div>
-              <ion-button expand="full" color="danger" type="submit">Publicar</ion-button>
+              <ion-button *ngIf="codigo == null"  class="colorbotao" type="submit">Publicar</ion-button>
+              <ion-button *ngIf="codigo != null"  class="colorbotao" type="submit">Salvar edição</ion-button>
             </div>
 
         </form>

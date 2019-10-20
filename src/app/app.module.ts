@@ -14,6 +14,10 @@ import { Base64 } from '@ionic-native/base64/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+
+
+
 
 
 @NgModule({
@@ -25,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       HttpModule,
       FormsModule,
       ReactiveFormsModule
+
   ],
   providers: [
     StatusBar,
@@ -32,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Base64,
-    ImagePicker
+    ImagePicker,
+    Keyboard
   ],
   bootstrap: [AppComponent]
 })

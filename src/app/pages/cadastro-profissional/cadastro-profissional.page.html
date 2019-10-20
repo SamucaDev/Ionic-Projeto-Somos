@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar style="--background:#F0F8FF">
+        <ion-title
+            class="textomeu"
+            style="color: #18d44d"
+        >
+            Projeto
+            <a class="diariotext">Somos</a>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#F0F8FF">
+
+    <h1 class="titulo">
+        Falta pouco para você fazer parte deste projeto
+    </h1>
+
+    <h4 class="subtitulo">Dados profissionais</h4>
+
+    <form [formGroup]="cadastro" (ngSubmit)="cadastrarUsuario()">
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="crpProfi" formControlName="crpProfi" placeholder="Nº de CRP: (campo não obrigatório)"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="crmProfi" formControlName="crmProfi" placeholder="Nº de CRM: (campo não obrigatório)" [brmasker]="{form: cadastro.get('crmProfi'), mask: '99/999999999'}"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="cargoProfi" formControlName="cargoProfi" placeholder="Profissão: (Ex: Psicólogo...)"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="instituicaoProfi" formControlName="instituicaoProfi" placeholder="Instituicao de ensino:"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="cnpjInstituicao" formControlName="cnpjInstituicao" placeholder="CNPJ da instituicao:" [brmasker]="{person: true}"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="registro2">
+            <ion-input type="text" [(ngModel)]="telefoneInstituicao" formControlName="telefoneInstituicao" placeholder="Telefone da instituicao:" [brmasker]="{phone: true}"></ion-input>
+        </ion-item>
+
+       <ion-button class="proxetapa" type="submit">Próxima etapa</ion-button>
+
+    </form>
+
+</ion-content>

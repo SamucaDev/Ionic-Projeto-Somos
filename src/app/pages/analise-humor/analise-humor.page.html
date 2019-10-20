@@ -1,0 +1,67 @@
+<ion-header >
+    <ion-toolbar style="--background:#F0F8FF">
+        <ion-back-button slot="start" defaultHref="/perfil-usuario"></ion-back-button>
+        <ion-title class="textomeu" style="color: #18d44d">Análise <a class="diariotext" >Humor</a></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="corfundo" >
+
+  <p class="mensagem">Selecione o mês e ano que você deseja analisar:</p>
+  <form [formGroup]="data">
+
+    <ion-row>
+      <ion-col>
+      <ion-select
+      placeholder="Escolha um ano"
+      [(ngModel)]="ano"
+      formControlName=ano
+      value={{ano}}
+      (ionChange)="aparecerGrafico()"
+  >
+
+    
+      <ion-select-option value="{{ 2019}}"> 2019 </ion-select-option>
+      <ion-select-option value="{{ 2020}}"> 2020 </ion-select-option>
+  </ion-select>
+</ion-col>
+<ion-col>
+  <ion-select
+      placeholder="Escolha um mês"
+      [(ngModel)]="mes"
+      value={{mes}}
+      formControlName=mes
+      (ionChange)="aparecerGrafico()"
+  >
+
+  
+      <ion-select-option value="{{ 01}}"> Janeiro </ion-select-option>
+      <ion-select-option value="{{ 03}}"> Fevereiro </ion-select-option>
+      <ion-select-option value="{{ 03}}"> Março </ion-select-option>
+      <ion-select-option value="{{ 04}}"> Abril </ion-select-option>
+      <ion-select-option value="{{ 05}}"> Maio </ion-select-option>
+      <ion-select-option value="{{ 06}}"> Julho </ion-select-option>
+      <ion-select-option value="{{ 07}}"> Junho </ion-select-option>
+      <ion-select-option value="{{ 08}}"> Agosto </ion-select-option>
+      <ion-select-option value="{{ 09}}"> Setembro </ion-select-option>
+      <ion-select-option value="{{ 10}}"> Outubro </ion-select-option>
+      <ion-select-option value="{{ 11}}"> Novembro </ion-select-option>
+      <ion-select-option value="{{ 12}}"> Dezembro </ion-select-option>
+  </ion-select>
+</ion-col>
+</ion-row>
+
+ <ion-button class="botaoo" type="submit" (click)="aparecerGrafico()">Ver análise</ion-button>
+
+  </form>
+  <div class="ion-padding">
+    <ion-card>
+     
+      <ion-card-content style="height: auto;">
+        <canvas  #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    
+  </div>
+</ion-content>

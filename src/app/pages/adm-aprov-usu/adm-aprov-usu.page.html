@@ -1,0 +1,92 @@
+<ion-header>
+    <ion-toolbar style="--background:#F0F8FF">
+        <ion-title
+            class="textomeu"
+            style="color: #18d44d"
+        >
+            Analisar
+            <a class="diariotext">Voluntários</a>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="corfundo">
+        <ion-refresher
+        slot="fixed"
+        (ionRefresh)="doRefresh($event)"
+    >
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <form *ngFor="let dados of dadosItem">
+        <ion-card style="--background:#fff">
+            <ion-card-header>
+                <ion-card-title class="nome">
+                    {{dados.NOME_USU}} {{dados.SOBRENOME_USU}}
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-row><ion-col><ion-label class="Titulo">Dados pessoais:</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>CPF: {{dados.CPF_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>RG: {{dados.RG_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>Logradouro: {{dados.ENDERECO_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>Número: {{dados.NUMERO_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col>Completamente: {{dados.COMPLEMENTO_USU}}</ion-col></ion-row>
+                <ion-row><ion-col>Bairro: {{dados.BAIRRO_USU}}</ion-col></ion-row>
+                <ion-row><ion-col><ion-label>CEP: {{dados.CEP_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col>UF: {{dados.UF_USU}}</ion-col></ion-row>
+                <ion-row><ion-col>Pais:  {{dados.PAIS_USU}}</ion-col></ion-row>
+                <ion-row><ion-col>Cidade: {{dados.CIDADE_USU}}</ion-col></ion-row>
+                <ion-row><ion-col>Data de nascimento: {{dados.DATANASC_USU}}</ion-col></ion-row>
+
+                <ion-row><ion-col><ion-label class="Titulo">Contato:</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>Telefone: {{dados.TELEFONE_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>Celular: {{dados.CELULAR_USU}}</ion-label></ion-col></ion-row>
+                <ion-row><ion-col><ion-label>Email: {{dados.EMAIL_USU}}</ion-label></ion-col></ion-row>
+
+
+
+            <ion-row><ion-col><ion-label class="Titulo">Dados profissionais:</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>CRP: {{dados.CRP_PROFI}}</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>CRM: {{dados.CRM_PROFI}}</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>Cargo: {{dados.CARGO_PRO}}</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>Instituição de Ensino: {{dados.INSTITUICAO_PROFI}}</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>CNPJ: {{dados.CNPJ_INSTITUICAO}}</ion-label></ion-col></ion-row>
+            <ion-row><ion-col><ion-label>Telefone: {{dados.TELEFONE_INSTITUICAO}}</ion-label></ion-col></ion-row>    
+            
+            <p class="botoes">
+                    <ion-chip class="ChipVerificacao" (click)="AprovarUsuario(dados)">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <ion-label>Aprovar</ion-label>
+                    </ion-chip>
+
+             
+                    <ion-chip class="ChipVerificacao2" (click)="ReprovarUsuario(dados)">
+                        <ion-icon name="close-circle"></ion-icon>
+                        <ion-label>Reprovar</ion-label>
+                    </ion-chip>
+                </p>
+        </ion-card>
+    </form>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+
+    <ion-tab-button (click)="RotaAdmAprov()">
+        <ion-icon
+            style="color:#18d44d"
+            name="checkbox"
+        ></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button style="color:#18d44d" (click)="RotaDenuPost() ">
+        <ion-icon name="warning"></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button style="color:#18d44d" (click)="RotaPerfilAdm()">
+        <ion-icon name="contact"></ion-icon>
+
+    </ion-tab-button>
+
+</ion-tab-bar>

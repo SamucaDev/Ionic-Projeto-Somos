@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar class="tobar">
+          <ion-title class="textomeu" style="color: #18d44d">Meu <a class="diariotext" >Feed</a></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="CorFundo" padding>
+
+  <ion-refresher
+      slot="fixed"
+      (ionRefresh)="doRefresh($event)"
+  >
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list class="tamanho">
+      <ion-card
+          class="corCard"
+          *ngFor="let post of postItem"
+      >
+          <ion-item lines="none">
+              <ion-avatar slot="start" >
+                  <img class="imagemAvatar" src="../../../../assets/img/usuario1.png">
+              </ion-avatar>
+              
+              <ion-label class="label">
+                  <h3 class="nomeUsuario">{{post.nomeUsu}} {{post.sobrenome}}</h3>
+                  <p class="dataPost">{{post.dataPost}}</p>
+              </ion-label>
+              <ion-button
+                  *ngIf="post.codigoUsuPostou == dadosUsuario.codUsuario"
+                  color="white"
+                  (click)="editPost(post)"
+              >
+                  <ion-icon
+                      name="create"
+                      color="secondary"
+                  ></ion-icon>
+              </ion-button>
+              <ion-button
+                  *ngIf="post.codigoUsuPostou == dadosUsuario.codUsuario"
+                  color="white"
+                  (click)="deletePost(post)"
+              >
+                  <ion-icon
+                      name="trash"
+                      color="danger"
+                  >
+                  </ion-icon>
+              </ion-button>
+
+              <ion-button
+                  color="white"
+                  
+              >
+                  <ion-icon
+                      name="warning"
+                      color="danger"
+                  >
+                  </ion-icon>
+              </ion-button>
+
+
+
+          </ion-item>
+          <ion-card-content class="card">{{post.conteudoPost}}</ion-card-content>
+          <img src="{{post.fotoPost}}">
+      </ion-card>
+
+  </ion-list>
+
+  <ion-fab
+      class="botaomais"
+      vertical="bottom"
+      horizontal="end"
+      slot="fixed"
+  >
+      <ion-fab-button (click)="RotaCadastrarDiario()">
+          <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+
+  <ion-tab-button (click)="RotaProfissionalInicio()">
+      <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaPostProfissional()">
+      <ion-icon name="paper"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaChatProfissional()">
+    <ion-icon name="chatboxes"></ion-icon>
+  </ion-tab-button>
+
+
+  <ion-tab-button (click)="RotaPerfilProfissional()">
+      <ion-icon name="contact"></ion-icon>
+  </ion-tab-button>
+
+</ion-tab-bar>

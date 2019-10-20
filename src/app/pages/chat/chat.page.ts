@@ -24,7 +24,6 @@ export class ChatPage implements OnInit {
   }
   RotaChat() {
     this.Router.navigateByUrl('chat');
-
   }
 
   RotaDiario() {
@@ -33,6 +32,14 @@ export class ChatPage implements OnInit {
 
   RotaPost() {
     this.Router.navigateByUrl('post');
+  }
+
+  RotaHome() {
+    this.Router.navigateByUrl('home');
+  }
+
+  RotaPerfil() {
+    this.Router.navigateByUrl('perfil-usuario');
   }
 
   Sair() {

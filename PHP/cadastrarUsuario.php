@@ -26,6 +26,7 @@ $cidade= $objData->cidade;
 $datanasc= $objData->datanasc;
 $telefone= $objData->telefone;
 $celular= $objData->celular;
+$sobrenome= $objData->sobrenome;
 
 $email= stripslashes($email);
 $password= stripslashes($password);
@@ -43,6 +44,7 @@ $cidade= stripslashes($cidade);
 $datanasc= stripslashes($datanasc);
 $telefone= stripslashes($telefone);
 $celular= stripslashes($celular);
+$sobrenome= stripslashes($sobrenome);
 
 $email= trim($email);
 $password= trim($password);
@@ -60,6 +62,7 @@ $cidade= trim($cidade);
 $datanasc= trim($datanasc);
 $telefone= trim($telefone);
 $celular= trim($celular);
+$sobrenome= trim($sobrenome);
 
 
 $dados;
@@ -68,10 +71,10 @@ require_once 'config.php';
 
 
 if($conexao){
-    $Sql = 
-    "INSERT INTO usuario (NOME_USU, CPF_USU, RG_USU, ENDERECO_USU, BAIRRO_USU, NUMERO_USU, COMPLEMENTO_USU, CEP_USU, UF_USU, PAIS_USU ,
-                          CIDADE_USU,DATANASC_USU, TELEFONE_USU, CELULAR_USU,EMAIL_USU, SENHA_USU) 
-     VALUES ('$nome','$cpf','$rg','$endereco','$bairro','$numero','$complemento','$cep', '$uf','$pais','$cidade', '$datanasc','$telefone', '$celular', '$email','$password')";
+$Sql = "INSERT INTO usuario (NOME_USU, CPF_USU, RG_USU, ENDERECO_USU, BAIRRO_USU, NUMERO_USU, COMPLEMENTO_USU, CEP_USU, UF_USU, PAIS_USU ,
+                          CIDADE_USU,DATANASC_USU, TELEFONE_USU, CELULAR_USU,EMAIL_USU, SENHA_USU, SOBRENOME_USU, TIPO_USU) 
+     VALUES ('$nome','$cpf','$rg','$endereco','$bairro','$numero','$complemento','$cep', '$uf','$pais',
+            '$cidade', '$datanasc','$telefone', '$celular', '$email','$password','$sobrenome', '1')";
 
     printf($Sql);
     $query = $conexao->prepare($Sql);

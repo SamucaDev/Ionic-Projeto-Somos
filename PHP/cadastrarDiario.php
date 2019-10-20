@@ -14,6 +14,13 @@ $conteudodiario= $objData->conteudodiario;
 $imageSrcDiario= $objData->imageSrcDiario;
 $codigoUsuario= $objData->codigoUsuario;
 
+
+
+$conteudodiario = str_replace("&nbsp;"," ",$conteudodiario);
+$conteudodiario = str_replace("\n", " ", $conteudodiario);
+$conteudodiario = str_replace("\r", "", $conteudodiario);
+$conteudodiario = preg_replace('/\s/',' ',$conteudodiario);
+
 $tituloDiario= stripslashes($tituloDiario);
 $conteudodiario= stripslashes($conteudodiario);
 $imageSrcDiario= stripslashes($imageSrcDiario);
@@ -29,9 +36,7 @@ $dados;
 require_once 'config.php';
 
 if($conexao){
-    $Sql = 
-    "INSERT INTO diario (TITULO_DIARIO, CONTEUDO_DIARIO, IMAGEM_DIARIO, COD_USU) 
-     VALUES ('$tituloDiario','$conteudodiario','$imageSrcDiario','$codigoUsuario')";
+ $Sql = "INSERT INTO diario (TITULO_DIARIO, CONTEUDO_DIARIO, IMAGEM_DIARIO, COD_USU) VALUES ('$tituloDiario','$conteudodiario','$imageSrcDiario','$codigoUsuario')";
 
     printf($Sql);
     $query = $conexao->prepare($Sql);

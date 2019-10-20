@@ -1,62 +1,109 @@
+
+
 <ion-header>
-    <ion-toolbar>
-        <ion-title>post</ion-title>
+    <ion-toolbar class="tobar">
+            <ion-title class="textomeu" style="color: #18d44d">Meu <a class="diariotext" >Feed</a></ion-title>
     </ion-toolbar>
 </ion-header>
 
+<ion-content  class="CorFundo" padding>
 
-<ion-content>     
 
-        <ion-refresher slot="fixed"(ionRefresh)="doRefresh($event)">      
-                <ion-refresher-content></ion-refresher-content>
-        </ion-refresher>
 
-    <ion-list>        
-        <ion-card class="corCard" *ngFor="let post of postItem">
-            <ion-item>
+    <ion-refresher
+        slot="fixed"
+        (ionRefresh)="doRefresh($event)"
+    >
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list  class="tamanho">
+        <ion-card
+            class="corCard"
+            *ngFor="let post of postItem"
+        >
+            <ion-item lines="none">
                 <ion-avatar slot="start">
-                  <img src="../../../assets/img/peter.jpg">
+                    <img src="../../../assets/img/usuario3.png">
                 </ion-avatar>
                 <ion-label>
-                  <h3>{{post.nomeUsu}}</h3>
-                <p>{{post.dataPost}}</p>
-              </ion-label>
-              </ion-item>
-            <ion-card-content>{{post.conteudoPost}}</ion-card-content>
-            <img src="../../../assets/img/peter.jpg">
+                    <h3>{{post.nomeUsu}} {{post.sobrenome}}</h3>
+                    <p class="data">{{post.dataPost}}</p>
+                </ion-label>
+                <ion-button *ngIf="post.codigoUsuPostou == dadosUsuario.codUsuario" color= "white" (click)="editPost(post)">
+                    <ion-icon
+                        name="create"
+                        color="danger"
+                        
+                    ></ion-icon>
+                </ion-button >
+                <ion-button *ngIf="post.codigoUsuPostou == dadosUsuario.codUsuario" color= "white" (click)="deletePost(post)">
+                    <ion-icon
+                        name="trash"
+                        color="danger"                         
+                    >
+                    </ion-icon>
+                </ion-button>
+
+                <ion-button
+                color="white"
+                (click)="denunciar(post)"
+                
+            >
+                <ion-icon
+                    name="warning"
+                    color="danger"
+                >
+                </ion-icon>
+            </ion-button>
+
+            </ion-item>
+            <ion-card-content class="card">{{post.conteudoPost}}</ion-card-content>
+            <img src="{{post.fotoPost}}">
         </ion-card>
-        
+     
     </ion-list>
 
     <ion-fab
-    class="botaomais"
-    vertical="center"
-    horizontal="end"
-    slot="fixed"
->
-    <ion-fab-button (click)="RotaCadastrarDiario()">
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-</ion-fab>
+        class="botaomais"
+        vertical="center"
+        horizontal="end"
+        slot="fixed"
+    >
+        <ion-fab-button (click)="RotaCadastrarDiario()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 
 </ion-content>
 
+<ion-tab-bar slot="bottom">
 
-    <ion-tab-bar slot="bottom">
-
-        <ion-tab-button (click)="RotaChat()">
-            <ion-icon name="calendar"></ion-icon>
-            <ion-label>chat</ion-label>
+        <ion-tab-button (click)="RotaHome()">
+            <ion-icon name="home"></ion-icon>
+           
         </ion-tab-button>
-
-        <ion-tab-button (click)="RotaDiario()">
-            <ion-icon name="contacts"></ion-icon>
-            <ion-label>Diário</ion-label>
-        </ion-tab-button>
-
+    
         <ion-tab-button (click)="RotaPost()">
-            <ion-icon name="information-circle"></ion-icon>
-            <ion-label>Post</ion-label>
+            <ion-icon name="paper"></ion-icon>
+           
         </ion-tab-button>
+    
+        <ion-tab-button (click)="RotaDiario()">
+            <ion-icon name="journal"></ion-icon>
+           
+        </ion-tab-button>
+    
+        <ion-tab-button (click)="RotaChat()">
+            <ion-icon name="chatboxes"></ion-icon>
+           
+        </ion-tab-button>
+    
+        <ion-tab-button (click)="RotaPerfil()">
+            <ion-icon name="contact"></ion-icon>
+            
+        </ion-tab-button>
+    
     </ion-tab-bar>
-
+    
+  

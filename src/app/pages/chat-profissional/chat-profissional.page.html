@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="tobar">
+          <ion-title class="textomeu" style="color: #18d44d">Meu <a class="diariotext" >Chat</a></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="CorFundo" padding>
+
+ 
+
+  <form *ngFor="let conversa of conversaItem">
+  <ion-item class="avatar" lines="none" (click)="enviarCodigo(conversa)">      
+      <ion-avatar class="avatarfoto" slot="start">
+        <img src="https://www.grupooncoclinicas.com/wp-content/uploads/2018/05/Dia-24-medico-8-030-450x600.jpg">
+      </ion-avatar>
+      <ion-label>{{conversa.nomeRemetente}} {{conversa.sobrenomeRemetente}}
+        <p>{{conversa.conteudoConversa}}</p> <p style="float: right">{{conversa.dataConversa}}</p>
+      </ion-label>
+   
+    </ion-item>
+    </form>
+
+</ion-content>
+
+
+
+
+<ion-tab-bar slot="bottom">
+
+  <ion-tab-button (click)="RotaProfissionalInicio()">
+      <ion-icon name="home"></ion-icon>
+     
+  </ion-tab-button>
+
+
+  <ion-tab-button (click)=" RotaPostProfissional()">
+    <ion-icon name="paper"></ion-icon>
+     
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaChatProfissional()">
+      <ion-icon name="chatboxes"></ion-icon>
+     
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaPerfilProfissional()">
+      <ion-icon name="contact"></ion-icon>
+      
+  </ion-tab-button>
+
+</ion-tab-bar>

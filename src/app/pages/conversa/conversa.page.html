@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="tobar">
+    <ion-item lines="none" class="avatar" >
+        <ion-back-button color="light" class="backButton" text="" slot="start" defaultHref="/diario"></ion-back-button>
+      <ion-avatar class="avatarfoto" slot="start">
+        <img src="https://www.grupooncoclinicas.com/wp-content/uploads/2018/05/Dia-24-medico-8-030-450x600.jpg">
+      </ion-avatar>
+      <ion-label style="color:#fff">{{nomeUsuario}} {{sobrenomeUsuario}}</ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="teladechat">
+<form *ngFor="let conversa of conversaItem" >
+
+  <ion-item lines="none" *ngIf="conversa.codigoRemetente != dadosUsuario.codUsuario" class="balaodechat" id="mensagem">
+      <ion-label>{{ conversa.nomeRemetente}} {{ conversa.sobrenomeRemetente}}
+          <p style="white-space: normal">{{conversa.conteudoConversa}}</p><p class="data" style="float: right">{{conversa.dataConversa}}</p></ion-label>
+        
+    
+  </ion-item>
+
+  <ion-item lines="none" *ngIf="conversa.codigoRemetente == dadosUsuario.codUsuario" class="balaodechat1" id="mensagem">
+    
+    <ion-label>{{ conversa.nomeRemetente}} {{ conversa.sobrenomeRemetente}}
+      <p style="white-space: normal">{{conversa.conteudoConversa}}</p><p class="data" style="float: right">{{conversa.dataConversa}}</p></ion-label>
+    
+    </ion-item>
+
+     
+
+</form>
+
+</ion-content>
+
+<form [formGroup]="mensagem" (ngSubmit)="inserirMensagem()">
+<ion-toolbar slot="end" color="secondary">
+  <ion-row>
+  <ion-item lines="none" class="balaoDeConversa">
+    <ion-textarea
+    rows="1" maxLength="2000"  
+    class="input2"
+    type="text"
+    
+    placeholder={{Place}}
+    [(ngModel)]="mensagemEnviada" formControlName="mensagemEnviada"
+
+></ion-textarea>
+
+</ion-item>
+
+<ion-icon  (click)="inserirMensagem()" class="iconedeMensagem" name="send"></ion-icon>
+
+</ion-row>
+
+</ion-toolbar>
+</form>

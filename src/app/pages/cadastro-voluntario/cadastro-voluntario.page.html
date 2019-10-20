@@ -1,0 +1,89 @@
+<ion-content class="bg-image" padding>
+            <img (click)="rotaLogin()" class="imagemLogo" src="/assets/img/logocadastrar.png">
+    
+        <form [formGroup]="cadastro" (ngSubmit)="cadastrarUsuario()">
+    
+        <h4 class="textoDados">Dados pessoais:</h4>
+    
+        <ion-item lines="none" class="registro2">
+            <ion-input class="input" type="text" placeholder="Nome" [(ngModel)]="nome" formControlName="nome"></ion-input>
+        </ion-item>     
+        
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="sobrenome" [(ngModel)]="sobrenome" formControlName="sobrenome"></ion-input>
+            </ion-item> 
+        
+        <ion-item lines="none" class="registro2">
+                <ion-input type="email" placeholder="E-mail" [(ngModel)]="email" formControlName="email"></ion-input>
+                </ion-item> 
+            
+        <ion-item lines="none" class="registro2">
+                <ion-input type="password" placeholder="Senha" [(ngModel)]="senha" formControlName="senha"></ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="CPF" [(ngModel)]="cpf" formControlName="cpf" [brmasker]="{person: true}"></ion-input>
+                </ion-item> 
+    
+         <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="RG" [(ngModel)]="rg" formControlName="rg" [brmasker]="{form: cadastro.get('rg'), mask: '99.999.999-9'}"></ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="date" placeholder="Data de nascimento" [(ngModel)]="datanasc" formControlName="datanasc"></ion-input>
+                </ion-item> 
+    
+    
+        
+         <h4 class="textoDados">Endereço:</h4>
+    
+         <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Logradouro" [(ngModel)]="endereco" formControlName="endereco">Data de nascimento</ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Bairro" [(ngModel)]="bairro" formControlName="bairro"></ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Número" [(ngModel)]="numero" formControlName="numero"></ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Complemento" [(ngModel)]="complemento" formControlName="complemento"></ion-input>
+                 </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="CEP" [(ngModel)]="cep" formControlName="cep" [brmasker]="{form: cadastro.get('cep'), mask: '99999-999'}"></ion-input>
+                </ion-item> 
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="UF" [(ngModel)]="uf" formControlName="uf"></ion-input>
+                </ion-item>
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Pais" [(ngModel)]="pais" formControlName="pais"></ion-input>
+                </ion-item>
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Cidade" [(ngModel)]="cidade" formControlName="cidade"></ion-input>
+                 </ion-item>
+    
+                 <h4 class="textoDados">Contato:</h4>
+    
+        <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Telefone" [(ngModel)]="telefone" formControlName="telefone" [brmasker]="{phone: true}"></ion-input>
+                </ion-item>
+    
+         <ion-item lines="none" class="registro2">
+                <ion-input type="text" placeholder="Celular" [(ngModel)]="celular" formControlName="celular" [brmasker]="{phone: true}"></ion-input>
+                </ion-item>
+    
+        <ion-button class="botaoCadastrar"  expand="block" type="submit">Cadastrar</ion-button>
+    
+        <h5 (click)="rotaLogin()" class="mensagem">Já possui uma conta? Clique aqui e volte para o Login!</h5>
+          
+    
+    
+            </form>
+    </ion-content>

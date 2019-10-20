@@ -1,0 +1,46 @@
+.header {
+    text-align: center;
+    height: 340px;
+    padding: 12px;
+    background-color:#32CD32;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;  
+    
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 27px;
+}
+
+.userName {
+    font-size: 25px;
+    margin-top: 14px;
+    font-weight: bold;
+    
+}
+
+.config {
+   
+        position:fixed;
+        top: 18px;
+        right: 20px;
+        font-size: 30px;
+        
+}
+
+.buttonAnalise{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.botaoSair{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

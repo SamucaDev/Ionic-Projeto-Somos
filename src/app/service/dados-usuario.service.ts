@@ -11,9 +11,30 @@ export class DadosUsuarioService {
   tipoUsuario = '';
   nomeUsuario = '';
   fotoUsuario = '';
+  sobrenomeUsuario = '';
+  iniciousurio = '';
+  codProf = '';
+  nascimento: '';
 
 
   constructor() { }
+
+  setCodigoProf(valor) {
+    this.codProf = valor;
+  }
+
+
+  getNascimento() {
+    return this.nascimento;
+  }
+
+  setNascimento(valor) {
+    this.nascimento = valor;
+  }
+
+  getCodigoProf() {
+    return this.codProf;
+  }
 
   setCodUsuario(valor) {
     this.codUsuario = valor;
@@ -21,6 +42,14 @@ export class DadosUsuarioService {
 
   getCodUsuario() {
     return this.codUsuario;
+  }
+
+  setInicioUsuario(valor) {
+    this.iniciousurio = valor;
+  }
+
+  getInicioUsuario(valor) {
+    return this.iniciousurio = valor;
   }
 
   setEmailUsuario(valor) {
@@ -53,6 +82,14 @@ export class DadosUsuarioService {
 
   getNomeUsuario() {
     return this.nomeUsuario;
+  }
+
+  setSobrenomeUsuario(valor) {
+    this.sobrenomeUsuario = valor;
+  }
+
+  getSobrenomeUsuario() {
+    return this.sobrenomeUsuario;
   }
 
   setFotoUsuario(valor) {

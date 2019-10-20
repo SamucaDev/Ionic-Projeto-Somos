@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, NavController, AlertController } from '@ionic/angular';
+import { IonSlides, NavController, AlertController, LoadingController } from '@ionic/angular';
 import { ServidorService } from '../../service/servidor-service.service';
 import { map } from 'rxjs/operators';
-import { Http , Headers, Response} from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 
 
@@ -15,9 +16,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class CadastroPage implements OnInit {
 
-  @ViewChild(IonSlides) slides: IonSlides;
-  public wavesPositions = 0;
-  public wavesDifference = 90;
+
 
   contatos: any;
   email: any;
@@ -38,6 +37,7 @@ export class CadastroPage implements OnInit {
   datanasc: any;
   telefone: any;
   celular: any;
+  sobrenome: any;
 
 
   constructor(
@@ -47,15 +47,22 @@ export class CadastroPage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public servidor: ServidorService,
     public alert: AlertController,
+    public keyboard: Keyboard,
     public http: Http,
+    public loading: LoadingController
 
   ) {
+
+    this.servidor.alertas('LEMBRETE!',
+      'Por abordarmos um assunto muito delicado, solicitamos estes dados para sua segurança e a segurança dos demais usuários!'
+      , 'Estou Ciente');
 
     this.activatedRoute.queryParams.subscribe(parametros => {
       this.email = parametros[' email '];
       this.senha = parametros[' senha '];
       this.nome = parametros[' nome '];
       this.cpf = parametros[' cpf '];
+      this.sobrenome = parametros[' sobrenome '];
       this.rg = parametros[' rg '];
       this.bairro = parametros[' bairro '];
       this.numero = parametros[' numero '];
@@ -69,50 +76,73 @@ export class CadastroPage implements OnInit {
       this.celular = parametros[' celular '];
 
       this.cadastro = this.FormBuilder.group({
-      email: ['', Validators.required],
-      senha: ['', Validators.required],
-      nome: ['', Validators.required],
-      cpf: ['', Validators.required],
-      rg: ['', Validators.required],
-      endereco: ['', Validators.required],
-      bairro: ['', Validators.required],
-      numero: ['', Validators.required],
-      complemento: ['', Validators.required],
-      cep: ['', Validators.required],
-      uf: ['', Validators.required],
-      pais: ['', Validators.required],
-      cidade: ['', Validators.required],
-      datanasc: ['', Validators.required],
-      telefone: ['', Validators.required],
-      celular: ['', Validators.required]
+        email: ['', Validators.required],
+        senha: ['', Validators.required],
+        nome: ['', Validators.required],
+        sobrenome: ['', Validators.required],
+        cpf: ['', Validators.required],
+        rg: ['', Validators.required],
+        endereco: ['', Validators.required],
+        bairro: ['', Validators.required],
+        numero: ['', Validators.required],
+        complemento: ['', Validators.required],
+        cep: ['', Validators.required],
+        uf: ['', Validators.required],
+        pais: ['', Validators.required],
+        cidade: ['', Validators.required],
+        datanasc: ['', Validators.required],
+        telefone: ['', Validators.required],
+        celular: ['', Validators.required]
+      });
     });
-  });
   }
 
   ngOnInit() { }
 
 
 
-cadastrarUsuario() {
-console.log(this.cadastro.value);
-this.postData(this.cadastro.value).subscribe(data => {
-console.log('Dados inseridos com sucesso');
-});
-}
+  async cadastrarUsuario() {
+    const load = await this.loading.create({
+      message: 'Estamos criando sua conta!'
+    });
+    await load.present();
 
-postData(valor) {
-  let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-  return this.http
-  .post(this.servidor.Urlget() + 'cadastrarUsuario.php', valor, {
-    headers: headers,
-    method: 'POST'
-  })
-  .pipe(
-    map((res:Response) => {
-      return res.json();
-    })
-  );
-}
+    if (this.nome === undefined || this.sobrenome === undefined || this.email === undefined || this.senha === undefined ||
+      this.cpf === undefined || this.rg === undefined || this.datanasc === undefined || this.endereco === undefined ||
+      this.bairro === undefined || this.numero === undefined || this.complemento === undefined || this.cep === undefined ||
+      this.uf === undefined || this.pais === undefined || this.cidade === undefined || this.celular === undefined) {
+      this.servidor.alertas('Atenção', 'Preencha todos os campos!', 'OK');
+      load.dismiss();
+    } else {
+      this.servidor.presentToast('Solicitação enviado com sucesso!');
+      this.Router.navigateByUrl('cadastro-usu-msg');
+      console.log(this.cadastro.value);
+      this.postData(this.cadastro.value).subscribe(data => {
+        console.log('Dados inseridos com sucesso');
+
+      });
+      load.dismiss();
+
+    }
+  }
+
+  rotaLogin() {
+    this.Router.navigateByUrl('login');
+  }
+
+  postData(valor) {
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http
+      .post(this.servidor.Urlget() + 'cadastrarUsuario.php', valor, {
+        headers: headers,
+        method: 'POST'
+      })
+      .pipe(
+        map((res: Response) => {
+          return res.json();
+        })
+      );
+  }
 
   getRetornar() {
     this.servidor.getPegar()
@@ -122,40 +152,14 @@ postData(valor) {
       );
   }
 
-  async logar() {
-    if (this.email === undefined || this.senha === undefined) {
-      const alert = await this.alert.create({
-        header: 'Atenção',
-        message: 'Preencha todos os campos!',
-        buttons: ['OK']
-      });
-      await alert.present();
-    } else {
-      this.http.get(this.servidor.Urlget() + 'login.php?email=' + this.email + '&senha=' + this.senha)
-        .pipe(map(res => res.json()))
-        .subscribe(
-          async dados => {
-            if (dados.msg.logado === 'sim') {
-              this.Router.navigateByUrl('/home');
-            } else {
-              const alert = await this.alert.create({
-                header: 'Atenção',
-                message: 'Usuário inválido',
-                buttons: ['OK']
-              });
-              await alert.present();
-            }
-          });
-    }
-  }
 
-  segmentChanged(event: any) {
-    if (event.detail.value === 'login') {
-      this.slides.slidePrev();
-      this.wavesPositions += this.wavesDifference;
-    } else {
-      this.slides.slideNext();
-      this.wavesPositions -= this.wavesDifference;
-    }
-  }
+
+
+
+
+
+
+
+
+
 }

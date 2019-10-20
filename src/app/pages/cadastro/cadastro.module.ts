@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CadastroPage } from './cadastro.page';
 import { LoginPageModule } from '../login/login.module';
+import { BrMaskerModule } from 'br-mask';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    BrMaskerModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],

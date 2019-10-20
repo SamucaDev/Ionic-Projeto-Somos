@@ -1,0 +1,67 @@
+
+  <ion-header style="background-color: green">
+
+    
+  </ion-header>
+  
+  
+<ion-content>
+  <div >
+    <ion-icon class="config" class="config" name="settings">     
+    </ion-icon>
+  </div>
+    <div class="header">
+        
+
+      <img class= "avatar" src="../../../../assets/img/alo.jpg">
+      <h1 class="userName">{{dadosUsuario.nomeUsuario}} {{dadosUsuario.sobrenomeUsuario}}</h1>
+    </div>
+
+    <ion-item lines="none">
+        <ion-label>Nome:<p>{{dadosUsuario.nomeUsuario}} {{dadosUsuario.sobrenomeUsuario}}</p></ion-label>
+      </ion-item>
+  
+      <ion-item lines="none">
+          <ion-label>Email:<p>{{dadosUsuario.emailUsuario}}</p></ion-label>
+        </ion-item>
+  
+      <ion-item lines="none">
+            <ion-label>Data de nascimento:<p>{{dadosUsuario.nascimento}}</p></ion-label>
+        </ion-item>
+  
+  
+    <div>
+      <ion-button
+          expand="full"
+          (click)="Sair()"
+      >
+          Sair
+      </ion-button>
+  </div>
+  </ion-content>
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button (click)="RotaModeradorInicio()">
+      <ion-icon name="home"></ion-icon>
+     
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaPostModerador()">
+      <ion-icon name="paper"></ion-icon>
+      
+  </ion-tab-button>
+
+  <ion-tab-button (click)="RotaPostVerificacao()">
+      <ion-icon name="checkbox"></ion-icon>
+      
+  </ion-tab-button>
+
+
+  <ion-tab-button (click)="RotaPerfilModerador()">
+      <ion-icon name="contact"></ion-icon>
+         
+      </ion-tab-button>
+  
+  </ion-tab-bar>
+  

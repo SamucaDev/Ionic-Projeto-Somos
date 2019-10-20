@@ -1,0 +1,30 @@
+<ion-header >
+    <ion-toolbar style="--background:#F0F8FF">
+      <ion-back-button slot="start" defaultHref="/chat-usuario"></ion-back-button>
+        <ion-title class="textomeu" style="color: #18d44d">Voluntários <a class="diariotext" >Online</a></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+ <ion-content class="corfundo">
+
+    <ion-refresher
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)"
+>
+    <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+
+  <form *ngFor="let online of onlineItem">
+  <ion-item lines="none" class="avatar" (click)="enviarCodigo(online)">
+  
+    <ion-avatar class="avatarfoto" slot="start">
+        <img src="https://www.grupooncoclinicas.com/wp-content/uploads/2018/05/Dia-24-medico-8-030-450x600.jpg">
+    </ion-avatar>
+    <ion-label>{{online.nomeUsuario}} {{online.sobrenomeUsuario}}
+    <p>{{online.cargoUsuario}}</p></ion-label>
+
+    </ion-item>
+</form>
+
+ </ion-content>

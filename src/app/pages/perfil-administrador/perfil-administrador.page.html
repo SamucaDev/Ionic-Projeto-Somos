@@ -1,0 +1,68 @@
+
+  <ion-header style="background-color: green">
+
+    
+    </ion-header>
+    
+    
+  <ion-content>
+   
+      <div class="header">
+          
+  
+        <img class= "avatar" src="../../../../assets/img/alo.jpg">
+        <h1 class="userName">{{dadosUsuario.nomeUsuario}} {{sobrenomeUsuario}}</h1>
+      </div>
+  
+      <ion-button class="buttonAnalise" (click)="RotaAnalise()">
+        Ver análise de humor
+      </ion-button>
+  
+      <ion-item lines="none">
+        <ion-label>Nome:<p>{{dadosUsuario.nomeUsuario}} {{sobrenomeUsuario}}</p></ion-label>
+      </ion-item>
+  
+      <ion-item lines="none">
+          <ion-label>Email:<p>{{dadosUsuario.emailUsuario}}</p></ion-label>
+        </ion-item>
+  
+      <ion-item lines="none">
+            <ion-label>Data de nascimento:<p>{{nascimento}}</p></ion-label>
+        </ion-item>
+  
+        
+  
+  
+  
+      <div>
+        <ion-button
+             class="botaoSair"
+            (click)="presentAlert()"
+        >
+            Sair
+        </ion-button>
+    </div>
+    </ion-content>
+    <ion-tab-bar slot="bottom">
+
+        <ion-tab-button (click)="RotaAdmAprov()">
+            <ion-icon
+                style="color:#18d44d"
+                name="checkbox"
+            ></ion-icon>
+    
+        </ion-tab-button>
+    
+        <ion-tab-button style="color:#18d44d" (click)="RotaDenuPost() ">
+            <ion-icon name="warning"></ion-icon>
+    
+        </ion-tab-button>
+    
+        <ion-tab-button style="color:#18d44d" (click)="RotaPerfilAdm()">
+            <ion-icon name="contact"></ion-icon>
+    
+        </ion-tab-button>
+    
+    </ion-tab-bar>
+    
+  

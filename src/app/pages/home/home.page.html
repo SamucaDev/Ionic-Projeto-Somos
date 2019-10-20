@@ -1,25 +1,144 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="tsteteste">
+    <div class="tsteteste1">
+        <img
+            class="fotologo"
+            src="../../../assets/img/logo.png"
+        >
+        <h3 class="comovcesta">Como você está se sentindo hoje?</h3>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
+        <ion-row class="botoes">
+
+            <ion-col >                
+                    <img src="../../../assets/img/emojiContente.png" (click)="humorExcelente()">
+                
+            </ion-col>
+
+            <ion-col style="text-align: center">
+                    <img src="../../../assets/img/emojiFeliz.png" (click)="humorFeliz()">
+            </ion-col>
+
+            <ion-col style="text-align: center">
+                    <img src="../../../assets/img/emojiTedio.png" (click)="humorTedio()">
+            </ion-col>
+
+            <ion-col style="text-align: center">
+                    <img src="../../../assets/img/emojiChateado.png" (click)="humorTriste()">
+            </ion-col>
+
+            <ion-col style="text-align: center">
+                    <img src="../../../assets/img/emojiNervoso.png" (click)="humorNervoso()">
+            </ion-col>
+
+        </ion-row>
+    </div>
+
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados3.png"
+            >
+        </div>
+
+        <div class="posthome">
+                <img
+                    class="posthome"
+                    src="../../../assets/img/dados9.png"
+                >
+            </div>
+
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados8.png"
+            >
+        </div>
+
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados7.png"
+            >
+        </div>
+
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados6.png"
+            >
+        </div>
     
-    <ion-tab-button (click)="RotaChat()" >
-      <ion-icon name="calendar"></ion-icon>
-      <ion-label>chat</ion-label>
-    </ion-tab-button>
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados5.png"
+            >
+        </div>
 
-    <ion-tab-button (click)="RotaDiario()">
-      <ion-icon name="contacts"></ion-icon>
-      <ion-label>Diário</ion-label>
+    <div class="posthome">
+            <img
+                class="posthome"
+                src="../../../assets/img/dados4.png"
+            >
+        </div>
+
+
+
+    <div class="posthome">
+        <img
+            class="posthome"
+            src="../../../assets/img/10-sintomas-físicos-do-estresse.png"
+        >
+    </div>
+
+    <div class="posthome">
+        <img
+            class="posthome"
+            src="../../../assets/img/dados1.jpg"
+        >
+    </div>
+
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+
+    <ion-tab-button (click)="RotaHome()">
+        <ion-icon
+            style="color:#18d44d"
+            name="home"
+        ></ion-icon>
+
     </ion-tab-button>
 
     <ion-tab-button (click)="RotaPost()">
-      <ion-icon name="information-circle"></ion-icon>
-      <ion-label>Post</ion-label>
+        <ion-icon
+            style="color:#18d44d"
+            name="paper"
+        ></ion-icon>
+
     </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+
+    <ion-tab-button (click)="RotaDiario()">
+        <ion-icon
+            style="color:#18d44d"
+            name="journal"
+        ></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button
+        style="color:#18d44d"
+        (click)="RotaChat()"
+    >
+        <ion-icon name="chatboxes"></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button
+        style="color:#18d44d"
+        (click)="RotaPerfil()"
+    >
+        <ion-icon name="contact"></ion-icon>
+
+    </ion-tab-button>
+
+</ion-tab-bar>

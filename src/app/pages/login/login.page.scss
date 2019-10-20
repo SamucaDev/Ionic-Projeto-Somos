@@ -23,16 +23,17 @@ ion-slides{
 
     .slide-inner{
     width: 75%;
-    color: #fff;
-    background-color: #0072bc;
+    color: #000;
+    background-color: #18d44d;
     border-radius: 10px;
+    opacity: 0.95;
 
     ion-item{
         --background: rgba(255,255,255, 0.2);
         --border-radius: 10px;
 
         ion-input{
-            --color: #fff;
+            --color: #000;
             }
         }
    
@@ -45,7 +46,7 @@ ion-slides{
     right: 0;
     bottom: 0;
     height: 45%;
-    background: #3c9ddc;
+    background: #18d44d;
    
 
     .waves {
@@ -67,3 +68,8 @@ ion-slides{
 .imagemLogo{
     width: 98%;
 }
+
+.tela {
+    --background: url(../../../assets/img/haha.gif);
+}
+

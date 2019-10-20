@@ -9,7 +9,7 @@ try {
     }
     $data = file_get_contents("php://input");   
 
-    $query = $conexao->prepare("SELECT * FROM `diario` where COD_USU= '$data' order by COD_DIARIO desc");
+    $query = $conexao->prepare("SELECT * FROM `diario` where COD_USU= '$data' order by COD_DIARIO DESC");
 
     $query->execute();
 
@@ -23,7 +23,7 @@ try {
         $out .= '"tituloDiario": "' . $result["TITULO_DIARIO"] . '",';
         $out .= '"conteudoDiario": "' . $result["CONTEUDO_DIARIO"] . '",';
         $out .= '"dataDiario": "' . $result["DATA_DIARIO"] . '",';
-        $out .= '"imagemDiario": "' . $result["IMAGEM_DIARIO"] . '",';
+        $out .= '"imageSrcDiario": "' . $result["IMAGEM_DIARIO"] . '",';
         $out .= '"CodigoUsuario": "' . $result["COD_USU"] . '"}';
     }
     $out .= "]";

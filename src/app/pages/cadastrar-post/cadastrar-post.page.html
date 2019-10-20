@@ -1,39 +1,53 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar style="--background: #F0F8FF">
 
         <ion-back-button
             slot="start"
             defaultHref="/post"
         ></ion-back-button>
 
-        <ion-title>Criar um Post</ion-title>
+        <ion-title *ngIf="codigo == null" >Criar um Post</ion-title>
+        <ion-title *ngIf="codigo != null" >Editar Post</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-list>
+<ion-content padding class="Corfundo">
+
+    <img class="fotomundo" src="../../../assets/img/MsgDiario.png">
+    <ion-list style="background: #F0F8FF">
         <form
             [formGroup]="postagemPost"
             (ngSubmit)="postarPost()"
         >
 
-            <ion-item>
-                <ion-label position="floating">Conteúdo</ion-label>
-                <ion-input
+            <ion-item class="conteudopost2">
+                    <ion-textarea
+                    rows="7" maxLength="2000"  
+                    class="input2"
                     type="text"
                     name="nome"
                     [(ngModel)]="conteudoPost"
                     formControlName="conteudoPost"
-                ></ion-input>
+                    placeholder="Digite o conteúdo da sua postagem..."
+                ></ion-textarea>
             </ion-item>
 
             <div>
                 <ion-button
+                    *ngIf="codigo == null"
                     expand="full"
                     color="danger"
                     type="submit"
                 >
                     Publicar
+                </ion-button>
+                <ion-button
+                    *ngIf="codigo != null"
+                    expand="full"
+                    color="danger"
+                    type="submit"
+                >
+                    Salvar Edição
                 </ion-button>
             </div>
 

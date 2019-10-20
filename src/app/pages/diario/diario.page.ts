@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, NavController, AlertController } from '@ionic/angular';
+import { IonSlides, NavController, AlertController, ToastController  } from '@ionic/angular';
 import { ServidorService } from '../../service/servidor-service.service';
 import { map } from 'rxjs/operators';
 import { Http, Headers, Response } from '@angular/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { DadosUsuarioService } from 'src/app/service/dados-usuario.service';
 
 
@@ -15,11 +15,12 @@ import { DadosUsuarioService } from 'src/app/service/dados-usuario.service';
 })
 export class DiarioPage implements OnInit {
 
+  detalhe: NavigationExtras;
   diario: any;
-  diarioItem: Array<{ codigoDiario: any, tituloDiario: any, conteudoDiario: any, dataDiario: any, imagemDiario: any }>;
+  diarioItem: Array<{ codigoDiario: any, tituloDiario: any, conteudoDiario: any, dataDiario: any, imageSrcDiario: any, CodigoUsuario: any}>;
   diarioItemTodos: Array<{
     codigoDiario: any, tituloDiario: any,
-    conteudoDiario: any, dataDiario: any, imagemDiario: any
+    conteudoDiario: any, dataDiario: any, imageSrcDiario: any, CodigoUsuario: any
   }>;
 
 
@@ -39,7 +40,7 @@ export class DiarioPage implements OnInit {
   }
 
   RotaChat() {
-    this.Router.navigateByUrl('chat');
+    this.Router.navigateByUrl('chat-usuario');
   }
 
   RotaDiario() {
@@ -48,6 +49,14 @@ export class DiarioPage implements OnInit {
 
   RotaPost() {
     this.Router.navigateByUrl('post');
+  }
+
+  RotaHome() {
+    this.Router.navigateByUrl('home');
+  }
+
+  RotaPerfil() {
+    this.Router.navigateByUrl('perfil-usuario');
   }
 
   RotaCadastrarDiario() {
@@ -68,7 +77,8 @@ export class DiarioPage implements OnInit {
               tituloDiario: listDiarios[i]['tituloDiario'],
               conteudoDiario: listDiarios[i]['conteudoDiario'],
               dataDiario: listDiarios[i]['dataDiario'],
-              imagemDiario: listDiarios[i]['imagemDiario']
+              imageSrcDiario: listDiarios[i]['imageSrcDiario'],
+              CodigoUsuario: listDiarios[i]['CodigoUsuario']
             });
           }
 
@@ -83,11 +93,11 @@ export class DiarioPage implements OnInit {
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
+    console.log('Recarregando dados');
     this.listDiarios();
 
     setTimeout(() => {
-      console.log('Async operation has ended');
+      console.log('Dados Recarregados');
       event.target.complete();
     }, 2000);
   }
@@ -126,5 +136,42 @@ export class DiarioPage implements OnInit {
 
   }
 
+  delete(codigo) {
+    let headers = new Headers ({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    return this.http.post( this.servidor.Urlget() + 'deleteDiario.php', codigo, {
+    headers: headers,
+    method: 'POST'
+    }).pipe(map(
+      (res: Response) => {
+        return res; }
+    ));
+  }
+
+  deleteDiario(diario) {
+    this.delete(diario.codigoDiario)
+    .subscribe(
+      data => {
+        console.log('produto deletado com sucesso');
+        this.listDiarios();
+        this.servidor.presentToast('Um item do seu diario foi excluido com sucesso!');
+      }, error => {
+        console.log('erro ao tentar excluir' + error);
+        this.servidor.presentToast('Erro ao tentar excluir um item do seu diário!');
+      }
+    );
+  }
+
+  editDiario(diario) {
+    this.detalhe = {
+      queryParams: {
+        'codigoDiario': diario.codigoDiario,
+        'tituloDiario': diario.tituloDiario,
+        'conteudoDiario': diario.conteudoDiario,
+        'dataDiario': diario.dataDiario,
+        'imageSrcDiario': diario.imageSrcDiario
+      }
+    };
+    this.Router.navigate(['cadastrar-diario'], this.detalhe);
+  }
 
 }

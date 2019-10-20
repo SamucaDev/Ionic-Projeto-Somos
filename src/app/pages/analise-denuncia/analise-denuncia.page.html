@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-toolbar style="--background:#F0F8FF">
+        <ion-title
+            class="textomeu"
+            style="color: #18d44d"
+        >
+            Analisar
+            <a class="diariotext">Voluntários</a>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="corfundo">
+        <ion-refresher
+        slot="fixed"
+        (ionRefresh)="doRefresh($event)"
+    >
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-row>
+        <ion-card style="--background: #fff;" class="corCard" *ngFor="let dados of postItem">
+            <ion-item lines="none">
+                <ion-avatar slot="start" class="imagemAvatar">
+                    <img src="../../../../assets/img/usuario3.png">
+                </ion-avatar>
+                <ion-label>
+                    <h3 class="nomeUsuario">{{dados.nomeUsu}} {{dados.sobrenome}}</h3>
+                    <p class="dataPost">{{dados.dataPost}}</p>
+                </ion-label>
+
+            </ion-item>
+            <ion-card-content style="background:#FFF">{{dados.conteudoPost}}</ion-card-content>
+            <img src="{{dados.fotoPost}}">
+            <p class="dataPost">Motivo da denúncia: {{dados.conteudoDenuncia}}</p>
+            <div style="background:#FFF">
+                       
+            </div>
+            <div style="background: #fff;">
+                
+           
+                <p style="background: #fff;" class="botoes">
+                        <ion-chip class="ChipVerificacao" (click)="AprovarUsuario(dados)">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            <ion-label>Não excluir</ion-label>
+                        </ion-chip>
+
+                 
+                        <ion-chip class="ChipVerificacao2" (click)="ReprovarUsuario(dados)">
+                            <ion-icon name="close-circle"></ion-icon>
+                            <ion-label>Excluir publicação</ion-label>
+                        </ion-chip>
+                    </p>
+
+            </div>
+        </ion-card>
+    </ion-row>
+
+</ion-content>
+
+
+<ion-tab-bar slot="bottom">
+
+    <ion-tab-button (click)="RotaAdmAprov()">
+        <ion-icon
+            style="color:#18d44d"
+            name="checkbox"
+        ></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button style="color:#18d44d" (click)="RotaDenuPost() ">
+        <ion-icon name="warning"></ion-icon>
+
+    </ion-tab-button>
+
+    <ion-tab-button style="color:#18d44d" (click)="RotaPerfilAdm()">
+        <ion-icon name="contact"></ion-icon>
+
+    </ion-tab-button>
+
+</ion-tab-bar>

@@ -9,10 +9,7 @@ try {
     }
     $data = file_get_contents("php://input");
 
-    $query = $conexao->prepare("SELECT P.COD_POST, P.DATA_POST, P.CONTEUDO_POST, P.FOTO_POST, P.STATUS_POST, P.COD_USU_POSTOU, P.COD_MOD_APROV, 
-                                       U.NOME_USU, U.COD_USU, U.TIPO_USU, U.FOTO_USU FROM post AS P 
-                                       INNER JOIN usuario AS U ON P.COD_USU_POSTOU = U.COD_USU  WHERE p.STATUS_POST	= 'A' 
-                                       ORDER BY p.COD_POST DESC ");
+    $query = $conexao->prepare("SELECT P.COD_POST, P.DATA_POST, P.CONTEUDO_POST, P.FOTO_POST, P.STATUS_POST, P.COD_USU_POSTOU, P.COD_MOD_APROV, U.NOME_USU, U.COD_USU, U.TIPO_USU, U.FOTO_USU, U.SOBRENOME_USU FROM post AS P INNER JOIN usuario AS U ON P.COD_USU_POSTOU = U.COD_USU  WHERE P.STATUS_POST	= 'A' ORDER BY P.COD_POST DESC ");
 
     $query->execute();
 
@@ -31,6 +28,7 @@ try {
         $out .= '"nomeUsu": "' . $result["NOME_USU"] . '",';
         $out .= '"tipoUsu": "' . $result["TIPO_USU"] . '",';
         $out .= '"fotoUsu": "' . $result["FOTO_USU"] . '",';
+        $out .= '"sobrenome": "' . $result["SOBRENOME_USU"] . '",';
         $out .= '"codigoUsuPostou": "' . $result["COD_USU_POSTOU"] . '"}';
     }
     $out .= "]";

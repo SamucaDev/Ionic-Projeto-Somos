@@ -1,0 +1,98 @@
+.botaomais{
+    margin-top:165px;
+    //width: 20px;
+}
+
+.corCard{
+    background-color: #0195b8;
+    height: auto;
+    position: relative;
+
+
+}
+
+.imagemdiario {
+    height: 130px;
+    
+}
+
+.card {
+    width: 330px;
+    margin: 5px auto;
+    position: relative;
+    --background: #F0F8FF
+    
+    
+}
+
+.titulodiario {
+   text-align: center;
+   margin-top:14px;
+   font-weight: bold;
+   font-family: 'Times New Roman', Times, serif;
+   color:#fff;
+   font-size: 24px;
+   margin-left: 15px ;
+   margin-right: 15px ;
+
+
+}
+
+.headertitulo {
+    height: 50px;
+}
+
+.conteudoDiario {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: bold;
+  color:#fff;
+  
+}
+
+.dataDiario {    
+    text-align: right;
+    margin-right: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color:#fff
+    
+}
+
+.chipopcoes{
+    text-align:right;
+}
+
+.corfundo{
+    --background: url('../../../assets/img/fundoVoluntarioOnline.png');	
+}
+
+.aloalo{
+    background: #F0F8FF
+}
+
+.textomeu{
+    font-size:25px;
+    
+    font-weight: bold;
+}
+
+.diariotext{
+    color: #859589
+}
+
+.avatar{
+    margin-top: 15px;
+    --background: #fff;
+    --border-radius: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.avatarfoto{
+    height: 60px;
+    width: 60px;
+}

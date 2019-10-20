@@ -1,0 +1,111 @@
+.tobar {
+  height: 60px;
+  --background: #009284;
+}
+
+.textomeu {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.diariotext {
+  color: #859589;
+}
+
+.CorFundo {
+  --background: #f0f8ff;
+}
+
+.botaoConversa {
+  --border-radius: 25px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 5px;
+}
+
+
+
+.balaodeConversa {
+  margin-right: 8px;
+}
+
+.avatar {
+  margin-top: 2px;
+  --background: #009284;
+}
+
+.avatarfoto {
+  height: 40px;
+  width: 40px;
+}
+
+.conversa {
+  font-size: 13px;
+}
+
+.backButton {
+  width: 24px;
+}
+
+.input2 {
+  width: 270px;
+  text-align: initial;
+  --background: #fff;
+  --color: #2f2f2f;
+  font-size: 13px;
+  height: 47px;
+}
+
+.balaoDeConversa {
+  --border-radius: 20px;
+  width: 270px;
+  margin-left: 15px;
+}
+
+.iconedeMensagem {
+  width: 37px;
+  height: 37px;
+  margin-left: 35px;
+  color: #898886;
+  margin-top: 7px;
+}
+
+.toobar {
+  --border-color: #e8e7e5;
+}
+
+.teladechat {
+  --background: url(../../../assets/img/planodefundo.jpg);
+}
+
+.balaodechat{
+  --border-radius: 10px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  width:60%;
+  
+  margin-left: 20px;
+  margin-right: auto;
+  float: left;
+}
+
+.balaodechat1{
+  --border-radius: 10px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  width:60%;
+ 
+  margin-left: auto;
+  margin-right: 20px;
+  --background:#dcf8c6;
+
+  float:right;
+}
+
+.data{
+  font-size:10px;
+}

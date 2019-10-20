@@ -13,6 +13,12 @@ $conteudoPost= $objData->conteudoPost;
 $fotoPost= $objData->fotoPost;
 $codigoUsuario= $objData->codigoUsuario;
 
+
+$conteudoPost = str_replace("&nbsp;"," ",$conteudoPost);
+$conteudoPost = str_replace("\n", " ", $conteudoPost);
+$conteudoPost = str_replace("\r", "", $conteudoPost);
+$conteudoPost = preg_replace('/\s/',' ',$conteudoPost);
+
 $conteudoPost= stripslashes($conteudoPost);
 $fotoPost= stripslashes($fotoPost);
 $codigoUsuario= stripslashes($codigoUsuario);
@@ -26,9 +32,7 @@ $dados;
 require_once 'config.php';
 
 if($conexao){
-    $Sql = 
-    "INSERT INTO post (CONTEUDO_POST, FOTO_POST, COD_USU_POSTOU) 
-     VALUES ('$conteudoPost','$fotoPost','$codigoUsuario')";
+$Sql = "INSERT INTO post (CONTEUDO_POST, FOTO_POST, COD_USU_POSTOU) VALUES ('$conteudoPost','$fotoPost','$codigoUsuario')";
 
     printf($Sql);
     $query = $conexao->prepare($Sql);

@@ -1,0 +1,50 @@
+.usuario {
+   
+    height: 60px;
+margin-top: 50px;
+--background: #FFD700;
+font-weight: bolder;
+width: 100%;
+
+
+}
+
+.voluntario {
+    height: 60px;
+margin-top: 60px;
+--background: #32CD32;
+font-weight: bolder;
+width: 100%;
+
+}
+
+.foto {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width:80%;
+    margin: 0 auto;
+    z-index:2;
+    top: 7%;
+}
+
+.tituloUsuario{ 
+    text-align: center;
+    font-family: fantasy;
+    color:grey;
+
+}
+
+.mensagem {
+    text-align: center;
+    color:#fff;
+    margin-top: 200px;
+    text-decoration: underline;
+    width: 100%;
+    --background:#6495ED;
+
+}
+
+.background{
+    --background: #F0F8FF;
+}

@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-toolbar style="--background:#F0F8FF">
+        <ion-title class="textomeu" style="color: #18d44d">Análise </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="imagemVerificacao">
+        <ion-refresher
+        slot="fixed"
+        (ionRefresh)="doRefresh($event)"
+    >
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row>
+        <ion-card class="corCard" *ngFor="let post of postItem">
+            <ion-item lines="none">
+                <ion-avatar slot="start" class="imagemAvatar">
+                    <img src="../../../../assets/img/usuario3.png">
+                </ion-avatar>
+                <ion-label>
+                    <h3 class="nomeUsuario">{{post.nomeUsu}} {{post.sobrenome}}</h3>
+                    <p class="dataPost">{{post.dataPost}}</p>
+                </ion-label>
+
+            </ion-item>
+            <ion-card-content style="background:#FFF">{{post.conteudoPost}}</ion-card-content>
+            <img src="{{post.fotoPost}}">
+            <div style="background:#FFF">
+                    
+                            <ion-item lines="none" class="justificacao">
+                                
+                                <ion-input
+                                type="text"
+                                class="textocaixa"
+                                [(ngModel)]="post.vereditoPost"
+                                placeholder="Justifique o motivo da sua escolhar!"
+                               
+                                   
+                                ></ion-input>
+                            </ion-item>
+                       
+            </div>
+            <div>
+                
+           
+                <p class="botoes">
+                        <ion-chip class="ChipVerificacao" (click)="AprovarPostagem(post)">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            <ion-label>Aprovar</ion-label>
+                        </ion-chip>
+
+                 
+                        <ion-chip class="ChipVerificacao2" (click)="ReprovarPostagem(post)">
+                            <ion-icon name="close-circle"></ion-icon>
+                            <ion-label>Reprovar</ion-label>
+                        </ion-chip>
+                    </p>
+
+            </div>
+        </ion-card>
+    </ion-row>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+
+    <ion-tab-button (click)="RotaModeradorInicio()">
+        <ion-icon name="home"></ion-icon>
+      
+    </ion-tab-button>
+
+    <ion-tab-button (click)="RotaPostModerador()">
+        <ion-icon name="paper"></ion-icon>
+       
+    </ion-tab-button>
+
+    <ion-tab-button (click)="RotaPostVerificacao()">
+        <ion-icon name="checkbox"></ion-icon>
+       
+    </ion-tab-button>
+
+
+    <ion-tab-button (click)="RotaPerfilModerador()">
+        <ion-icon name="contact"></ion-icon>
+      
+    </ion-tab-button>
+
+</ion-tab-bar>

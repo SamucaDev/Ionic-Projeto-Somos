@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar style="--background: #F0F8FF">
+
+      <ion-back-button
+          slot="start"
+          defaultHref="/post"
+      ></ion-back-button>
+
+      <ion-title>Denunciar publicação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="Corfundo">
+
+ <h1 class="texto-label">Agradeçemos sua preocupação, isso é um ponto muito importante para filtrar e deixar nossa plataforma segura e confiavel!!</h1>
+  <ion-list style="background: #F0F8FF">
+      <form
+          [formGroup]="postagemPost"
+          (ngSubmit)="postarPost()">
+
+          <ion-item class="conteudopost2">
+                  <ion-textarea
+                  rows="7" maxLength="2000"  
+                  class="input2"
+                  type="text"
+                  name="nome"
+                  [(ngModel)]="conteudoPost"
+                  formControlName="conteudoPost"
+                  placeholder="Relate sua denúncia..."
+              ></ion-textarea>
+          </ion-item>
+
+          <div>
+              <ion-button
+                  expand="full"
+                  color="danger"
+                  (click)="postarPost()"
+              >
+                  Publicar
+              </ion-button>
+              
+          </div>
+
+      </form>
+  </ion-list>
+
+</ion-content>

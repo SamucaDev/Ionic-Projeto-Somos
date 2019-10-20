@@ -1,0 +1,68 @@
+
+    .bg-image{
+        //--background: url(../../../assets/img/cadastro.png);   
+        --background:#F0F8FF;    
+        }
+    
+        .textoRegistro{ 
+            text-align: center;   
+            color:white;
+            font-size: 40px;    
+        }
+       
+        .registro2{
+            --border-radius: 20px;
+            --color:#000;
+            --background:white;;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 85%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+    
+        }
+    
+      
+    
+        .textoDados {
+            color:#18d44d;
+            font-weight: bold;
+           
+        }
+    
+        .input {
+            --color: #000;
+        }
+    
+        .imagemLogo {
+            display: block;
+            margin-top:20px;
+            margin-left: auto;
+            margin-right: auto
+            
+        }
+    
+        .botaoCadastrar {
+            margin-top:20px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            --background: #18d44d;      
+            --color:#fff;
+           
+        }
+    
+        .mensagem {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        color:#18d44d;
+        text-decoration: underline;
+        font-weight: bold;
+    
+        }
+    
+        .mensagem:hover{
+            color:#fff;
+        }
